@@ -1,19 +1,55 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
 
-def get_some_ikb() -> InlineKeyboardMarkup:
-    ikb = [
-        [InlineKeyboardButton(text="Кнопка 1", callback_data="f_btn")],
-        [InlineKeyboardButton(text="Кнопка 2", callback_data="s_btn"), InlineKeyboardButton(text="Кнопка 3", callback_data="t_btn")],
-
-    ]
-    ikeyboard = InlineKeyboardMarkup(inline_keyboard=ikb)
-    return ikeyboard
-
-
-def get_some_kb() -> ReplyKeyboardMarkup:
-    keyboard = ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text='пу')], [KeyboardButton(text='пупу'), KeyboardButton(text='пупупу')]],
+def get_admin_kb():
+    kb = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="🎮 Начать розыгрыш"), KeyboardButton(text="🏁 Завершить розыгрыш")],
+            [KeyboardButton(text="📣 Сделать объявление"), KeyboardButton(text="📊 Статистика розыгрыша")]
+        ],
         resize_keyboard=True
     )
-    return keyboard
+    return kb
+
+
+def get_user_kb():
+    kb = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="🔢 Мое число"), KeyboardButton(text="ℹ️ Задать вопрорс")]
+        ],
+        resize_keyboard=True
+    )
+    return kb
+
+
+def get_cancel_kb():
+    kb = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="❌ Отмена")]
+        ],
+        resize_keyboard=True
+    )
+    return kb
+
+
+def get_confirm_kb():
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text="✅ Да", callback_data="confirm_yes"),
+                InlineKeyboardButton(text="❌ Нет", callback_data="confirm_no")
+            ]
+        ]
+    )
+    return kb
+
+def get_confirm_message_kb():
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text="✅ Да", callback_data="confirm_yes_message"),
+                InlineKeyboardButton(text="❌ Нет", callback_data="confirm_no_message")
+            ]
+        ]
+    )
+    return kb

@@ -6,26 +6,15 @@ import sys
 from aiogram.client.bot import DefaultBotProperties
 import logging
 import asyncio
-from pyrogram import Client
 
-"""
-Эту часть можно вырезать
-Ниже будет .env_template (со след строки все скопировать и вставать в .env файл)
-
-DB_USER=
-DB_PASS=
-DB_HOST=
-DB_PORT=
-DB_NAME=
-TOKEN_API_TG=
-"""
-
-sys.path.append(os.path.join(sys.path[0], 'k_bot'))
+# sys.path.append(os.path.join(sys.path[0], 'k_bot'))
 
 load_dotenv('.env')
 token = os.getenv('TOKEN_API_TG')
-SQL_URL_RC = (f'postgresql+asyncpg://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}'
-              f'@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}')
+SQL_URL_RC = os.getenv('DATABASE_URL')
+
+# SQL_URL_RC = (f'postgresql+asyncpg://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}'
+#               f'@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}')
 
 bot = Bot(
     token=token,
